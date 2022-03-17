@@ -17,7 +17,7 @@ Sharding in mongoDB means splitting the data into multiple instances of mongoDB 
 
 ##### b & c) What are the different components required to implement sharding? & Explain architecture of sharding in mongoDB?
 --![Unavngivet123](https://user-images.githubusercontent.com/21145015/158875747-4e1d3f8f-4849-4402-be84-5f35a7aea7e7.png)
-Sharding requires 3 components to work.
+##### Sharding requires 3 components to work.
 * config server
 The config server holds the keys for the data, keeping track of which shard contains the requested data. The config server is a mongod instance and needs to be in the same replica set as the mongos server. The config server has a special --configsvr sertup parameter and has standard port 27019. The config server can be replicated giving resiliance for data loss. Dosent matter if you have alot of data if you cant find it, because you lost the key.
 
@@ -56,8 +56,8 @@ As we have already dicussed, replication is the answer. This would increase the 
 - Data redundancy with replication feature.
 - Horizontal scaleability with sharding
 
--Encourages denormilazation due to there being no rule enforcement from schemas and allowing nesting
--No type checking or input validation. The data needs to be cleaned and checked by the code.
--joins are difficult to implement.
--nesting is limited at 100th level.
--Can be prone to duplication of data, due to lack of restrictions.
+- Encourages denormilazation due to there being no rule enforcement from schemas and allowing nesting
+- No type checking or input validation. The data needs to be cleaned and checked by the code.
+- joins are difficult to implement.
+- nesting is limited at 100th level.
+- Can be prone to duplication of data, due to lack of restrictions.
