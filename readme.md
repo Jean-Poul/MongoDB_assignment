@@ -12,10 +12,10 @@ How the code works
 How to run the project
 
 ### Questions
-a) What is sharding in mongoDB?
+##### a) What is sharding in mongoDB?
 Sharding in mongoDB means splitting the data into multiple instances of mongoDB servers, increasing both read and write performance. These instances of mongoDB are grouped together in a cluster, where they together share the responbility to serve the data. Adding more shards(instances of mongoDB servers) to the cluster should in theory increase performance in read and write, especially in heavy load conditions. The data is split into the shards according to the *shard key*, this can both be range based or hashed, on a specific field in a collection. The shard key should be able to evenly distribute the data to the shards, and should preferably be the most often serached field, and needs to be indexed.
 
-b & c) What are the different components required to implement sharding? & Explain architecture of sharding in mongoDB?
+##### b & c) What are the different components required to implement sharding? & Explain architecture of sharding in mongoDB?
 --![Unavngivet123](https://user-images.githubusercontent.com/21145015/158875747-4e1d3f8f-4849-4402-be84-5f35a7aea7e7.png)
 Sharding requires 3 components to work.
 * config server
@@ -31,21 +31,21 @@ The setup for sharding is very tedious and requieres setting up each individual 
 
 The flow of data is as follow: The mongos server acts an entry point for the client. The mongos server, when requested for read or write operation, will contact the config server. The config server will lookup which shard to contact for the specific data. The mongos server will then contact the correct shard to complete the operation.
 
-d) Provide implementation of map and reduce function
+##### d) Provide implementation of map and reduce function
 -Answered by code
-e) Provide execution command for running MapReduce
+##### e) Provide execution command for running MapReduce
 -Answered by code
-f) Provide top 10 recorded out of the sorted result. (hint: use sort on the result returned by
+##### f) Provide top 10 recorded out of the sorted result. (hint: use sort on the result returned by
 MapReduce)
 -Answered by code
 
-g) Show what happens to the data when one shard is turned off.
+##### g) Show what happens to the data when one shard is turned off.
 When a shard goes down, the data that shard contains becomes unavailable. The effectively means half or more of the data is unreadable. This can be mediagted by replicating the shards. Replications would in that case step in and acts as the new primary.
 
-h) Show what happens to the data when the shard rejoins.
+##### h) Show what happens to the data when the shard rejoins.
 Depending on the setup, when a shard comes back online, if it is part of a replication cluster. It will try to catchup with the newest available data.
 
-i) Explain how you could introduce redundancy to the setup above.
+##### i) Explain how you could introduce redundancy to the setup above.
 As we have already dicussed, replication is the answer. This would increase the redundancy of shards substantially and actually make this a viable solution. This means that the data would reside in multiple servers, acting as a backup if a shard goes down. Even though it comes with a big cost in setup and amount of servers. If done right each replica and shard should live on their own server. This can quickly scale up dozens if not hundreds of servers.  
 
 #### Pros & cons with mongoDB
